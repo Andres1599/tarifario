@@ -28,7 +28,7 @@ import { NotificationsService } from './services/notifications/notifications.ser
 
   ],
   providers: [
-    NotificationsService
+    NotificationsService,
   ],
   bootstrap: [AppComponent]
 })

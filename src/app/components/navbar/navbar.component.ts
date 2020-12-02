@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { Router } from '@angular/router';
+import { AuthService } from 'app/services/auth/auth.service';
 
 @Component({
     selector: 'app-navbar',
@@ -9,13 +10,21 @@ import { Router } from '@angular/router';
     styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+
     private listTitles: any[];
+
     location: Location;
     mobile_menu_visible: any = 0;
+
     private toggleButton: any;
     private sidebarVisible: boolean;
 
-    constructor(location: Location, private element: ElementRef, private router: Router) {
+    constructor(
+        location: Location,
+        private element: ElementRef,
+        private router: Router,
+        private authService: AuthService,
+    ) {
         this.location = location;
         this.sidebarVisible = false;
     }
@@ -44,14 +53,14 @@ export class NavbarComponent implements OnInit {
         body.classList.add('nav-open');
 
         this.sidebarVisible = true;
-    };
+    }
 
     sidebarClose() {
         const body = document.getElementsByTagName('body')[0];
         this.toggleButton.classList.remove('toggled');
         this.sidebarVisible = false;
         body.classList.remove('nav-open');
-    };
+    }
 
     sidebarToggle() {
         // const toggleButton = this.toggleButton;
@@ -109,7 +118,7 @@ export class NavbarComponent implements OnInit {
             this.mobile_menu_visible = 1;
 
         }
-    };
+    }
 
     getTitle() {
         var titlee = this.location.prepareExternalUrl(this.location.path());
@@ -123,5 +132,9 @@ export class NavbarComponent implements OnInit {
             }
         }
         return 'Dashboard';
+    }
+
+    logOut() {
+        this.authService.logout();
     }
 }

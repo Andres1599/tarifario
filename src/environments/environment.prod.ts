@@ -1,4 +1,6 @@
 export const environment = {
   production: true,
-  apiBase: 'localhost:4000/api/'
+  apiBase: 'http://localhost:4000/api',
+  token: 'uvauth',
+  expired: 'ext'
 };

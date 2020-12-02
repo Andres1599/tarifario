@@ -8,6 +8,7 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
 import { UserProfileComponent } from '../user-profile/user-profile.component';
 import { TableListComponent } from '../catalogos/table-list.component';
 import { TypographyComponent } from '../arrendamientos/typography.component';
+import { AdministracionComponent } from '../administracion/administracion.component';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { TypographyComponent } from '../arrendamientos/typography.component';
     UserProfileComponent,
     TableListComponent,
     TypographyComponent,
+    AdministracionComponent,
   ]
 })
 

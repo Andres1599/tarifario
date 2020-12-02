@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { AuthService } from 'app/services/auth/auth.service';
 
 @NgModule({
   imports: [
@@ -20,6 +21,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     FooterComponent,
     NavbarComponent,
     SidebarComponent
-  ]
+  ],
+  providers: [
+    AuthService,
+  ],
 })
 export class ComponentsModule { }

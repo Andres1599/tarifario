@@ -3,22 +3,22 @@
         <div class="card-header text-center">
         </div>
         <div class="card-body">
-            <form>
+            <form [formGroup]="formUserLogin">
                 <div class="form-group">
                     <div class="form-label-group">
                         <label for="inputEmail">Correo</label>
-                        <input type="email" name="inputEmail" class="form-control" placeholder="Email address"
-                            required="required" autofocus="autofocus">
+                        <input type="email" name="inputEmail" class="form-control" placeholder="example@example.com"
+                            formControlName="correo">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form-label-group">
                         <label for="inputPassword">Contraseña</label>
                         <input type="password" name="inputPassword" class="form-control" placeholder="Password"
-                            required="required">
+                            formControlName="password">
                     </div>
                 </div>
-                <a class="btn btn-primary btn-block">Ingresar</a>
+                <a class="btn btn-primary btn-block" (click)="LogIn()" *ngIf="formUserLogin.valid">Ingresar</a>
             </form>
         </div>
     </div>
