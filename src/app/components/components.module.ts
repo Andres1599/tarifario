@@ -15,6 +15,9 @@ import { ProveedoresDialogoComponent } from './proveedores-dialogo/proveedores-d
 import { DialogosService } from 'app/services/dialogos/dialogos.service';
 import { FormsModule } from '@angular/forms';
 import { AdvertenciaDialogoComponent } from './advertencia-dialogo/advertencia-dialogo.component';
+import { TipoMaterialComponent } from './tipo-material/tipo-material.component';
+import { TipoMaterialDialogoComponent } from './tipo-material-dialogo/tipo-material-dialogo.component';
+import { MaterialesService } from 'app/services/materiales/materiales.service';
 
 @NgModule({
   imports: [
@@ -29,7 +32,9 @@ import { AdvertenciaDialogoComponent } from './advertencia-dialogo/advertencia-d
     SidebarComponent,
     ProveedoresComponent,
     ProveedoresDialogoComponent,
-    AdvertenciaDialogoComponent
+    AdvertenciaDialogoComponent,
+    TipoMaterialComponent,
+    TipoMaterialDialogoComponent
   ],
   exports: [
     FooterComponent,
@@ -37,14 +42,17 @@ import { AdvertenciaDialogoComponent } from './advertencia-dialogo/advertencia-d
     SidebarComponent,
     ProveedoresComponent,
     ProveedoresDialogoComponent,
-    AdvertenciaDialogoComponent
+    AdvertenciaDialogoComponent,
+    TipoMaterialComponent,
+    TipoMaterialDialogoComponent
   ],
   providers: [
     AuthService,
     ProveedoresService,
     UserService,
     NotificationsService,
-    DialogosService
+    DialogosService,
+    MaterialesService
   ],
 })
 export class ComponentsModule { }

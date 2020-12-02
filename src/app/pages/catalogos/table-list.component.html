@@ -24,8 +24,9 @@
                                 Tipo de materiales
                             </mat-panel-title>
                         </mat-expansion-panel-header>
+                        <app-tipo-material #tipoMateriales></app-tipo-material>
                         <mat-action-row>
-                            <button mat-raised-button type="submit" class="btn btn-danger pull-right">Agregar</button>
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="tipoMaterial.wantCreate()">Agregar</button>
                         </mat-action-row>
                     </mat-expansion-panel>
                     <mat-expansion-panel>

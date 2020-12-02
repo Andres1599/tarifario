@@ -18,8 +18,8 @@ export class DialogosService {
    */
   public openDialog(comp: ComponentType<unknown>): MatDialogRef<unknown> {
     const dialogRef = this.dialog.open(comp, {
-      width: this.width,
-      height: this.height,
+      width: 'auto',
+      height: 'auto',
       data: this.shareData,
     });
 

@@ -8,4 +8,5 @@ export const MESSAGE_ES = {
     warning_proveedor: '¿Estas seguro que quieres eliminar este proveedor?',
     warning_material: '¿Estas seguro que quieres eliminar este material?',
     warning_tipo_material: '¿Estas seguro que quieres eliminar este tipo de material?',
+    warning_monedas: '¿Estas seguro que quieres eliminar esta moneda?',
 };
