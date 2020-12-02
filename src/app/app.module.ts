@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 
-import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { AdminLayoutComponent } from './pages/admin-layout/admin-layout.component';
 import { NotificationsService } from './services/notifications/notifications.service';
 
 @NgModule({

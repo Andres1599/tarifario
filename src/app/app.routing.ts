@@ -10,7 +10,7 @@ const routes: Routes = [
     pathMatch: 'full',
   }, {
     path: '',
-    loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)
+    loadChildren: () => import('./pages/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)
   }, {
     path: 'login',
     loadChildren: () => import('./pages/auth/auth.module').then(m => m.AuthModule)
