@@ -11,30 +11,37 @@ import { MaterialModule } from 'app/material.module';
 import { ProveedoresService } from 'app/services/proveedores/proveedores.service';
 import { UserService } from 'app/services/user/user.service';
 import { NotificationsService } from 'app/services/notifications/notifications.service';
+import { ProveedoresDialogoComponent } from './proveedores-dialogo/proveedores-dialogo.component';
+import { DialogosService } from 'app/services/dialogos/dialogos.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
   ],
   declarations: [
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
-    ProveedoresComponent
+    ProveedoresComponent,
+    ProveedoresDialogoComponent
   ],
   exports: [
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
-    ProveedoresComponent
+    ProveedoresComponent,
+    ProveedoresDialogoComponent
   ],
   providers: [
     AuthService,
     ProveedoresService,
     UserService,
     NotificationsService,
+    DialogosService
   ],
 })
 export class ComponentsModule { }

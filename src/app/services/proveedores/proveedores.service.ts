@@ -17,4 +17,12 @@ export class ProveedoresService {
   getProveedores(): Observable<Respuesta<Proveedores[]>> {
     return this.http.get<Respuesta<Proveedores[]>>(environment.apiBase + '/proveedor/');
   }
+
+  createProveedores(proveedor: Proveedores): Observable<Respuesta<Proveedores>> {
+    return this.http.post<Respuesta<Proveedores>>(environment.apiBase + '/proveedor/', proveedor);
+  }
+
+  updateProveedores(proveedor: Proveedores): Observable<Respuesta<boolean>> {
+    return this.http.post<Respuesta<boolean>>(environment.apiBase + '/proveedor/', proveedor);
+  }
 }

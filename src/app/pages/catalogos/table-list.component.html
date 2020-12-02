@@ -13,9 +13,9 @@
                                 Proveedores
                             </mat-panel-title>
                         </mat-expansion-panel-header>
-                        <app-proveedores></app-proveedores>
+                        <app-proveedores #proveedores></app-proveedores>
                         <mat-action-row>
-                            <button mat-raised-button class="btn btn-danger">Agregar</button>
+                            <button mat-raised-button class="btn btn-danger" (click)="proveedores.wantCreate()">Agregar</button>
                         </mat-action-row>
                     </mat-expansion-panel>
                     <mat-expansion-panel>
