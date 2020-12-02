@@ -59,6 +59,19 @@ export class ProveedoresComponent implements OnInit {
     }
   }
 
+  private updateProveedor(proveedor: Proveedores): void {
+    try {
+      this.proveedorService.updateProveedores(proveedor).subscribe(value => {
+        if (value.ok) {
+          this.notificationService.showSuccessNotification(MESSAGE_ES.update);
+          this.getProveedores();
+        }
+      })
+    } catch (error) {
+      this.notificationService.showErrorNotification(MESSAGE_ES.error);
+    }
+  }
+
   wantCreate(): void {
     try {
       this.dialogosService.shareData = { id: 0, proveedor: '', estado: true };
@@ -68,6 +81,22 @@ export class ProveedoresComponent implements OnInit {
         .subscribe((value: Proveedores) => {
           if (value) {
             this.newProveedor(value);
+          }
+        })
+    } catch (error) {
+      this.notificationService.showErrorNotification(MESSAGE_ES.error);
+    }
+  }
+
+  wantUpdate(proveedor: Proveedores): void {
+    try {
+      this.dialogosService.shareData = proveedor;
+      this.dialogosService
+        .openDialog(ProveedoresDialogoComponent)
+        .beforeClosed()
+        .subscribe((value: Proveedores) => {
+          if (value) {
+            this.updateProveedor(value);
           }
         })
     } catch (error) {

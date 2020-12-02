@@ -25,4 +25,8 @@ export class ProveedoresService {
   updateProveedores(proveedor: Proveedores): Observable<Respuesta<boolean>> {
     return this.http.post<Respuesta<boolean>>(environment.apiBase + '/proveedor/', proveedor);
   }
+
+  deleteProveedores(proveedor: Proveedores): Observable<Respuesta<boolean>> {
+    return this.http.delete<Respuesta<boolean>>(environment.apiBase + '/proveedor/' + `${proveedor.id}`);
+  }
 }
