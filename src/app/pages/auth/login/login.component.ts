@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
   LogIn() {
     try {
       const usuario: Usuarios = this.formUserLogin.value;
-      this.authService.login(usuario).subscribe((value: Respuesta<{ token: string; expiresIn: string; }>) => {
+      this.authService.login(usuario).subscribe((value: Respuesta<{ token: string; expiresIn: string; usuario: Usuarios; }>) => {
         if (value.ok) {
           this.authService.setLogin(value);
         } else {

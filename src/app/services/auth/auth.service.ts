@@ -16,6 +16,7 @@ export class AuthService {
 
   private token = environment.token;
   private expired = environment.expired;
+  private user = environment.user;
 
   constructor(
     private http: HttpClient,
@@ -23,15 +24,16 @@ export class AuthService {
     private notificationService: NotificationsService,
   ) { }
 
-  login(usuario: Usuarios): Observable<Respuesta<{ token: string; expiresIn: string; }>> {
-    return this.http.post<Respuesta<{ token: string; expiresIn: string; }>>(environment.apiBase + '/login/', usuario)
+  login(usuario: Usuarios): Observable<Respuesta<{ token: string; expiresIn: string; usuario: Usuarios; }>> {
+    return this.http.post<Respuesta<{ token: string; expiresIn: string; usuario: Usuarios; }>>(environment.apiBase + '/login/', usuario)
   }
 
-  setLogin(respuesta: Respuesta<{ token: string; expiresIn: string; }>): void {
+  setLogin(respuesta: Respuesta<{ token: string; expiresIn: string; usuario: Usuarios; }>): void {
     try {
       const expiresAt = moment().add(respuesta.data.expiresIn, 'seconds');
       localStorage.setItem(this.token, respuesta.data.token);
       localStorage.setItem(this.expired, JSON.stringify(expiresAt.valueOf()));
+      localStorage.setItem(this.user, this.DataEncode(JSON.stringify(respuesta.data.usuario)))
       this.router.navigateByUrl('/dashboard');
     } catch (error) {
       this.notificationService.showErrorNotification(MESSAGE_ES.errorLogIn);
@@ -50,6 +52,32 @@ export class AuthService {
   geToken(): string {
     try {
       return localStorage.getItem(this.token);
+    } catch (error) {
+      return null;
+    }
+  }
+
+  getUser(): Usuarios {
+    try {
+      return JSON.parse(this.DataDecode(localStorage.getItem(this.user)))
+    } catch (error) {
+      return null;
+    }
+  }
+
+  private DataEncode(data: any): string {
+    try {
+      const encode = btoa(data);
+      return encode;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  private DataDecode(data: any): any {
+    try {
+      const dataDecode = atob(data);
+      return dataDecode;
     } catch (error) {
       return null;
     }
