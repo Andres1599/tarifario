@@ -18,6 +18,8 @@ import { AdvertenciaDialogoComponent } from './advertencia-dialogo/advertencia-d
 import { TipoMaterialComponent } from './tipo-material/tipo-material.component';
 import { TipoMaterialDialogoComponent } from './tipo-material-dialogo/tipo-material-dialogo.component';
 import { MaterialesService } from 'app/services/materiales/materiales.service';
+import { MaterialesComponent } from './materiales/materiales.component';
+import { MaterialesDialogoComponent } from './materiales-dialogo/materiales-dialogo.component';
 
 @NgModule({
   imports: [
@@ -34,7 +36,9 @@ import { MaterialesService } from 'app/services/materiales/materiales.service';
     ProveedoresDialogoComponent,
     AdvertenciaDialogoComponent,
     TipoMaterialComponent,
-    TipoMaterialDialogoComponent
+    TipoMaterialDialogoComponent,
+    MaterialesComponent,
+    MaterialesDialogoComponent
   ],
   exports: [
     FooterComponent,
@@ -44,7 +48,9 @@ import { MaterialesService } from 'app/services/materiales/materiales.service';
     ProveedoresDialogoComponent,
     AdvertenciaDialogoComponent,
     TipoMaterialComponent,
-    TipoMaterialDialogoComponent
+    TipoMaterialDialogoComponent,
+    MaterialesComponent,
+    MaterialesDialogoComponent
   ],
   providers: [
     AuthService,

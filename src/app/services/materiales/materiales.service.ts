@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Materiales } from 'app/models/material.model';
 import { Respuesta } from 'app/models/respuesta.model';
 import { TipoMateriales } from 'app/models/tipo.material.model';
 import { environment } from 'environments/environment';
@@ -16,11 +17,27 @@ export class MaterialesService {
     return this.http.get<Respuesta<TipoMateriales[]>>(environment.apiBase + '/tipo/material/');
   }
 
+  getMateriales(): Observable<Respuesta<Materiales[]>> {
+    return this.http.get<Respuesta<Materiales[]>>(environment.apiBase + '/material/');
+  }
+
   createTipoMaterial(tipoMaterial: TipoMateriales): Observable<Respuesta<TipoMateriales>> {
     return this.http.post<Respuesta<TipoMateriales>>(environment.apiBase + '/tipo/material/', tipoMaterial);
   }
 
+  createMateriales(material: Materiales): Observable<Respuesta<Materiales>> {
+    return this.http.post<Respuesta<Materiales>>(environment.apiBase + '/material/', material);
+  }
+
   deleteTipoMaterial(tipoMaterial: TipoMateriales): Observable<Respuesta<boolean>> {
     return this.http.delete<Respuesta<boolean>>(environment.apiBase + '/tipo/material/' + `${tipoMaterial.id}`);
+  }
+
+  deleteMateriales(material: Materiales): Observable<Respuesta<boolean>> {
+    return this.http.delete<Respuesta<boolean>>(environment.apiBase + '/material/' + `${material.id}`);
+  }
+
+  updateMateriales(material: Materiales): Observable<Respuesta<boolean>> {
+    return this.http.put<Respuesta<boolean>>(environment.apiBase + '/material/', material);
   }
 }

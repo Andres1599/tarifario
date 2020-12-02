@@ -35,8 +35,9 @@
                                 Materiales
                             </mat-panel-title>
                         </mat-expansion-panel-header>
+                        <app-materiales #materiales></app-materiales>
                         <mat-action-row>
-                            <button mat-raised-button type="submit" class="btn btn-danger pull-right">Agregar</button>
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="materiales.wantCreate()">Agregar</button>
                         </mat-action-row>
                     </mat-expansion-panel>
                 </mat-accordion>

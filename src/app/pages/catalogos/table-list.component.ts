@@ -11,6 +11,7 @@ export class TableListComponent implements OnInit {
 
   @ViewChild('proveedores') proveedores: ProveedoresComponent;
   @ViewChild('tipoMateriales') tipoMaterial: TipoMaterialComponent;
+  @ViewChild('materiales') materiales: TipoMaterialComponent;
   
   constructor() { }
 
