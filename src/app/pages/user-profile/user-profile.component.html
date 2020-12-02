@@ -6,27 +6,27 @@
         <p class="card-category">Actualiza la información de tu perfil.</p>
       </div>
       <div class="card-body">
-        <form>
+        <form [formGroup]="formUser">
           <div class="row">
             <div class="col-md-6">
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="Nombres" type="text">
+                <input matInput placeholder="Nombres" type="text" formControlName="nombre" [(ngModel)]="usuarioG.nombre">
               </mat-form-field>
             </div>
             <div class="col-md-6">
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="Apellidos" type="text">
+                <input matInput placeholder="Apellidos" type="text" formControlName="apellido">
               </mat-form-field>
             </div>
           </div>
           <div class="row">
             <div class="col-md-12">
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="Correo" type="email">
+                <input matInput placeholder="Correo" type="email" formControlName="correo">
               </mat-form-field>
             </div>
           </div>
-          <button mat-raised-button type="submit" class="btn btn-danger pull-right">Actualizar</button>
+          <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="updateUser()">Actualizar</button>
           <div class="clearfix"></div>
         </form>
       </div>

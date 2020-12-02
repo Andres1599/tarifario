@@ -16,12 +16,12 @@ export class UserService {
     return this.http.get<Respuesta<Usuarios[]>>(environment.apiBase + '/usuario/')
   }
 
-  getUser(usuario: Usuarios): Observable<Respuesta<Usuarios[]>> {
-    return this.http.get<Respuesta<Usuarios[]>>(environment.apiBase + '/usuario/' + `${usuario.id}`)
+  getUser(usuario: Usuarios): Observable<Respuesta<Usuarios>> {
+    return this.http.get<Respuesta<Usuarios>>(environment.apiBase + '/usuario/' + `${usuario.id}`)
   }
 
   updateUser(usuario: Usuarios): Observable<Respuesta<boolean>> {
-    return this.http.put<Respuesta<boolean>>(environment.apiBase + '/usuario/', usuario.id)
+    return this.http.put<Respuesta<boolean>>(environment.apiBase + '/usuario/', usuario)
   }
 
   createUser(usuario: Usuarios): Observable<Respuesta<Usuarios[]>> {

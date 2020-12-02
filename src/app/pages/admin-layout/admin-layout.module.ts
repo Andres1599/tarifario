@@ -9,6 +9,7 @@ import { UserProfileComponent } from '../user-profile/user-profile.component';
 import { TableListComponent } from '../catalogos/table-list.component';
 import { TypographyComponent } from '../arrendamientos/typography.component';
 import { AdministracionComponent } from '../administracion/administracion.component';
+import { UserService } from 'app/services/user/user.service';
 
 @NgModule({
   imports: [
@@ -24,7 +25,10 @@ import { AdministracionComponent } from '../administracion/administracion.compon
     TableListComponent,
     TypographyComponent,
     AdministracionComponent,
-  ]
+  ],
+  providers: [
+    UserService,
+  ],
 })
 
 export class AdminLayoutModule { }
