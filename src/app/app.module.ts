@@ -25,7 +25,6 @@ import { NotificationsService } from './services/notifications/notifications.ser
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-
   ],
   providers: [
     NotificationsService,

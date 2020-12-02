@@ -10,6 +10,7 @@ import { TableListComponent } from '../catalogos/table-list.component';
 import { TypographyComponent } from '../arrendamientos/typography.component';
 import { AdministracionComponent } from '../administracion/administracion.component';
 import { UserService } from 'app/services/user/user.service';
+import { ComponentsModule } from 'app/components/components.module';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { UserService } from 'app/services/user/user.service';
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    ComponentsModule
   ],
   declarations: [
     DashboardComponent,

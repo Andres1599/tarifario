@@ -5,6 +5,10 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatSelectModule } from "@angular/material/select";
 import { MatTooltipModule } from "@angular/material/tooltip";
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
     imports: [
@@ -14,6 +18,10 @@ import { MatTooltipModule } from "@angular/material/tooltip";
         MatInputModule,
         MatSelectModule,
         MatTooltipModule,
+        MatExpansionModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
     ],
     exports: [
         MatButtonModule,
@@ -22,6 +30,10 @@ import { MatTooltipModule } from "@angular/material/tooltip";
         MatInputModule,
         MatSelectModule,
         MatTooltipModule,
+        MatExpansionModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
     ]
 })
 
