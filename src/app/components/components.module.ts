@@ -14,6 +14,7 @@ import { NotificationsService } from 'app/services/notifications/notifications.s
 import { ProveedoresDialogoComponent } from './proveedores-dialogo/proveedores-dialogo.component';
 import { DialogosService } from 'app/services/dialogos/dialogos.service';
 import { FormsModule } from '@angular/forms';
+import { AdvertenciaDialogoComponent } from './advertencia-dialogo/advertencia-dialogo.component';
 
 @NgModule({
   imports: [
@@ -27,14 +28,16 @@ import { FormsModule } from '@angular/forms';
     NavbarComponent,
     SidebarComponent,
     ProveedoresComponent,
-    ProveedoresDialogoComponent
+    ProveedoresDialogoComponent,
+    AdvertenciaDialogoComponent
   ],
   exports: [
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
     ProveedoresComponent,
-    ProveedoresDialogoComponent
+    ProveedoresDialogoComponent,
+    AdvertenciaDialogoComponent
   ],
   providers: [
     AuthService,

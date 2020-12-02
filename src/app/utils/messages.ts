@@ -4,5 +4,8 @@ export const MESSAGE_ES = {
     update: 'Se ha actualizado correctamente el elemento.',
     errorLogIn: 'Usuario o contraseña incorrectos, intenta de nuevo.',
     errorLogOut: 'Error al momento de intentar cerrar sesión.',
-    error: 'Algo salio mal, intenta de nuevo.'
+    error: 'Algo salio mal, intenta de nuevo.',
+    warning_proveedor: '¿Estas seguro que quieres eliminar este proveedor?',
+    warning_material: '¿Estas seguro que quieres eliminar este material?',
+    warning_tipo_material: '¿Estas seguro que quieres eliminar este tipo de material?',
 };

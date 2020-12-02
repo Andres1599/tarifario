@@ -7,6 +7,7 @@ import { DialogosService } from 'app/services/dialogos/dialogos.service';
 import { NotificationsService } from 'app/services/notifications/notifications.service';
 import { ProveedoresService } from 'app/services/proveedores/proveedores.service';
 import { MESSAGE_ES } from 'app/utils/messages';
+import { AdvertenciaDialogoComponent } from '../advertencia-dialogo/advertencia-dialogo.component';
 import { ProveedoresDialogoComponent } from '../proveedores-dialogo/proveedores-dialogo.component';
 
 @Component({
@@ -72,6 +73,19 @@ export class ProveedoresComponent implements OnInit {
     }
   }
 
+  private deleteProveedor(proveedor: Proveedores): void {
+    try {
+      this.proveedorService.deleteProveedores(proveedor).subscribe(value => {
+        if (value.ok) {
+          this.notificationService.showSuccessNotification(MESSAGE_ES.delete);
+          this.getProveedores();
+        }
+      })
+    } catch (error) {
+      this.notificationService.showErrorNotification(MESSAGE_ES.error);
+    }
+  }
+
   wantCreate(): void {
     try {
       this.dialogosService.shareData = { id: 0, proveedor: '', estado: true };
@@ -97,6 +111,25 @@ export class ProveedoresComponent implements OnInit {
         .subscribe((value: Proveedores) => {
           if (value) {
             this.updateProveedor(value);
+          }
+        })
+    } catch (error) {
+      this.notificationService.showErrorNotification(MESSAGE_ES.error);
+    }
+  }
+
+  wantDelete(proveedor: Proveedores): void {
+    try {
+      this.dialogosService.shareData = {
+        title: 'Proveedores',
+        message: MESSAGE_ES.warning_proveedor
+      };
+      this.dialogosService
+        .openDialog(AdvertenciaDialogoComponent)
+        .beforeClosed()
+        .subscribe((value: boolean) => {
+          if (value) {
+            this.deleteProveedor(proveedor);
           }
         })
     } catch (error) {

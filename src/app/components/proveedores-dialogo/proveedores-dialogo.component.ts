@@ -17,13 +17,4 @@ export class ProveedoresDialogoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  save(): Proveedores {
-    try {
-      this.data.estado = true;
-      return this.data;
-    } catch (error) {
-      return null;
-    }
-  }
-
 }
