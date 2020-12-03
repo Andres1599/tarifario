@@ -15,7 +15,8 @@
                         </mat-expansion-panel-header>
                         <app-usuarios #usuarios></app-usuarios>
                         <mat-action-row>
-                            <button mat-raised-button class="btn btn-danger" (click)="usuarios.wantCreate()">Agregar</button>
+                            <button mat-raised-button class="btn btn-danger"
+                                (click)="usuarios.wantCreate()">Agregar</button>
                         </mat-action-row>
                     </mat-expansion-panel>
                     <mat-expansion-panel>
@@ -26,20 +27,22 @@
                         </mat-expansion-panel-header>
                         <app-tipo-usuarios #tipoUsuarios></app-tipo-usuarios>
                         <mat-action-row>
-                            <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="tipoUsuarios.wantCreate()">Agregar</button>
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right"
+                                (click)="tipoUsuarios.wantCreate()">Agregar</button>
                         </mat-action-row>
                     </mat-expansion-panel>
-                    <!-- <mat-expansion-panel>
+                    <mat-expansion-panel>
                         <mat-expansion-panel-header>
                             <mat-panel-title>
-                                Materiales
+                                Estados
                             </mat-panel-title>
                         </mat-expansion-panel-header>
-                        <app-materiales #materiales></app-materiales>
+                        <app-estados #estados></app-estados>
                         <mat-action-row>
-                            <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="materiales.wantCreate()">Agregar</button>
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right"
+                                (click)="estados.wantCreate()">Agregar</button>
                         </mat-action-row>
-                    </mat-expansion-panel> -->
+                    </mat-expansion-panel>
                 </mat-accordion>
             </div>
         </div>

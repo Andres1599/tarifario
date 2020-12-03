@@ -29,6 +29,9 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { UsuariosDialogoComponent } from './usuarios-dialogo/usuarios-dialogo.component';
 import { TipoUsuariosComponent } from './tipo-usuarios/tipo-usuarios.component';
 import { TipoUsuariosDialogoComponent } from './tipo-usuarios-dialogo/tipo-usuarios-dialogo.component';
+import { EstadosComponent } from './estados/estados.component';
+import { EstadosDialogoComponent } from './estados-dialogo/estados-dialogo.component';
+import { EstadosService } from 'app/services/estados/estados.service';
 
 @NgModule({
   imports: [
@@ -57,6 +60,8 @@ import { TipoUsuariosDialogoComponent } from './tipo-usuarios-dialogo/tipo-usuar
     UsuariosDialogoComponent,
     TipoUsuariosComponent,
     TipoUsuariosDialogoComponent,
+    EstadosComponent,
+    EstadosDialogoComponent,
   ],
   exports: [
     FooterComponent,
@@ -77,6 +82,8 @@ import { TipoUsuariosDialogoComponent } from './tipo-usuarios-dialogo/tipo-usuar
     UsuariosDialogoComponent,
     TipoUsuariosComponent,
     TipoUsuariosDialogoComponent,
+    EstadosComponent,
+    EstadosDialogoComponent,
   ],
   providers: [
     AuthService,
@@ -85,7 +92,8 @@ import { TipoUsuariosDialogoComponent } from './tipo-usuarios-dialogo/tipo-usuar
     NotificationsService,
     DialogosService,
     MaterialesService,
-    MonedasService
+    MonedasService,
+    EstadosService
   ],
 })
 export class ComponentsModule { }

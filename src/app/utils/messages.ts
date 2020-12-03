@@ -12,4 +12,5 @@ export const MESSAGE_ES = {
     warning_tiendas: '¿Estas seguro que quieres eliminar esta tienda?',
     warning_usuarios: '¿Estas seguro que quieres inhabilitar este usuario?',
     warning_tipo_usuarios: '¿Estas seguro que quieres inhabilitar este usuario?',
+    warning_estados: '¿Estas seguro que quieres eliminar este estado?',
 };

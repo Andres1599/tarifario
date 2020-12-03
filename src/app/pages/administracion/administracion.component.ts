@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { EstadosComponent } from 'app/components/estados/estados.component';
 import { TipoUsuariosComponent } from 'app/components/tipo-usuarios/tipo-usuarios.component';
 import { UsuariosComponent } from 'app/components/usuarios/usuarios.component';
 
@@ -11,7 +12,7 @@ export class AdministracionComponent implements OnInit {
 
   @ViewChild('usuarios') usuarios: UsuariosComponent;
   @ViewChild('tipoUsuarios') tipoUsuarios: TipoUsuariosComponent;
-
+  @ViewChild('estados') estados: EstadosComponent;
   constructor() { }
 
   ngOnInit(): void {
