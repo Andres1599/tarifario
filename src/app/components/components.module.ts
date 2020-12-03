@@ -25,6 +25,8 @@ import { TiendasDialogoComponent } from './tiendas-dialogo/tiendas-dialogo.compo
 import { MaterialTiendaComponent } from './material-tienda/material-tienda.component';
 import { MaterialTiendaDialogoComponent } from './material-tienda-dialogo/material-tienda-dialogo.component';
 import { MonedasService } from 'app/services/monedas/monedas.service';
+import { UsuariosComponent } from './usuarios/usuarios.component';
+import { UsuariosDialogoComponent } from './usuarios-dialogo/usuarios-dialogo.component';
 
 @NgModule({
   imports: [
@@ -49,6 +51,8 @@ import { MonedasService } from 'app/services/monedas/monedas.service';
     TiendasDialogoComponent,
     MaterialTiendaComponent,
     MaterialTiendaDialogoComponent,
+    UsuariosComponent,
+    UsuariosDialogoComponent,
   ],
   exports: [
     FooterComponent,
@@ -65,6 +69,8 @@ import { MonedasService } from 'app/services/monedas/monedas.service';
     TiendasDialogoComponent,
     MaterialTiendaComponent,
     MaterialTiendaDialogoComponent,
+    UsuariosComponent,
+    UsuariosDialogoComponent,
   ],
   providers: [
     AuthService,

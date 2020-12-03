@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { UsuariosComponent } from 'app/components/usuarios/usuarios.component';
 
 @Component({
   selector: 'app-administracion',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./administracion.component.css']
 })
 export class AdministracionComponent implements OnInit {
+
+  @ViewChild('usuarios') usuarios: UsuariosComponent;
 
   constructor() { }
 

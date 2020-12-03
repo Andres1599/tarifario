@@ -1,8 +1,47 @@
-<div class="card">
-    <div class="card-header card-header-danger">
-        <h4 class="card-title">Material Dashboard Heading</h4>
-        <p class="card-category">Created using Roboto Font Family</p>
-    </div>
-    <div class="card-body">
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-danger">
+                <h4 class="card-title ">Administración</h4>
+                <p class="card-category">Agrega, modifica o elimina información de las tablas maestras.</p>
+            </div>
+            <div class="card-body">
+                <mat-accordion>
+                    <mat-expansion-panel [expanded]="true">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Usuarios
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <app-usuarios #usuarios></app-usuarios>
+                        <mat-action-row>
+                            <button mat-raised-button class="btn btn-danger" (click)="usuarios.wantCreate()">Agregar</button>
+                        </mat-action-row>
+                    </mat-expansion-panel>
+                    <!-- <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Tipo de materiales
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <app-tipo-material #tipoMateriales></app-tipo-material>
+                        <mat-action-row>
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="tipoMaterial.wantCreate()">Agregar</button>
+                        </mat-action-row>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Materiales
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <app-materiales #materiales></app-materiales>
+                        <mat-action-row>
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="materiales.wantCreate()">Agregar</button>
+                        </mat-action-row>
+                    </mat-expansion-panel> -->
+                </mat-accordion>
+            </div>
+        </div>
     </div>
 </div>

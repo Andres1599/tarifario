@@ -10,4 +10,5 @@ export const MESSAGE_ES = {
     warning_tipo_material: '¿Estas seguro que quieres eliminar este tipo de material?',
     warning_monedas: '¿Estas seguro que quieres eliminar esta moneda?',
     warning_tiendas: '¿Estas seguro que quieres eliminar esta tienda?',
+    warning_usuarios: '¿Estas seguro que quieres inhabilitar este usuario?',
 };
