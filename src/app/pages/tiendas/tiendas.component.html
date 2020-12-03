@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-header card-header-danger">
+                <h4 class="card-title ">Tiendas</h4>
+                <p class="card-category"> Liatado de todos las tiendas disponibles</p>
+            </div>
+            <div class="card-body">
+                <app-tiendas-table #tiendas></app-tiendas-table>
+            </div>
+            <div class="card-footer">
+                <button mat-raised-button type="submit" class="btn btn-danger pull-right"
+                    (click)="tiendaTable.wantCreate()">Agregar</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <div class="card">
+            <div class="card-header card-header-danger">
+                <h4 class="card-title ">Materiales por tienda</h4>
+                <p class="card-category"> Liatado de todos los materiales disponibles por tienda.</p>
+            </div>
+            <div class="card-body">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-danger">
+                <h4 class="card-title ">Agregar nuevos materiales a tienda</h4>
+                <p class="card-category">Agrega nuevos materiales al listado actual de una tienda.</p>
+            </div>
+            <div class="card-body">
+            </div>
+        </div>
+    </div>
+</div>

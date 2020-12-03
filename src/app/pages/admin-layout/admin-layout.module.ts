@@ -11,6 +11,7 @@ import { TypographyComponent } from '../arrendamientos/typography.component';
 import { AdministracionComponent } from '../administracion/administracion.component';
 import { UserService } from 'app/services/user/user.service';
 import { ComponentsModule } from 'app/components/components.module';
+import { TiendasComponent } from '../tiendas/tiendas.component';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { ComponentsModule } from 'app/components/components.module';
     TableListComponent,
     TypographyComponent,
     AdministracionComponent,
+    TiendasComponent,
   ],
   providers: [
     UserService,

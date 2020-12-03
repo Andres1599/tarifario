@@ -20,6 +20,8 @@ import { TipoMaterialDialogoComponent } from './tipo-material-dialogo/tipo-mater
 import { MaterialesService } from 'app/services/materiales/materiales.service';
 import { MaterialesComponent } from './materiales/materiales.component';
 import { MaterialesDialogoComponent } from './materiales-dialogo/materiales-dialogo.component';
+import { TiendasTableComponent } from './tiendas/tiendas.component';
+import { TiendasDialogoComponent } from './tiendas-dialogo/tiendas-dialogo.component';
 
 @NgModule({
   imports: [
@@ -38,7 +40,9 @@ import { MaterialesDialogoComponent } from './materiales-dialogo/materiales-dial
     TipoMaterialComponent,
     TipoMaterialDialogoComponent,
     MaterialesComponent,
-    MaterialesDialogoComponent
+    MaterialesDialogoComponent,
+    TiendasTableComponent,
+    TiendasDialogoComponent,
   ],
   exports: [
     FooterComponent,
@@ -50,7 +54,9 @@ import { MaterialesDialogoComponent } from './materiales-dialogo/materiales-dial
     TipoMaterialComponent,
     TipoMaterialDialogoComponent,
     MaterialesComponent,
-    MaterialesDialogoComponent
+    MaterialesDialogoComponent,
+    TiendasTableComponent,
+    TiendasDialogoComponent,
   ],
   providers: [
     AuthService,
