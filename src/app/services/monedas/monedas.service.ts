@@ -21,6 +21,6 @@ export class MonedasService {
   }
 
   deleteMonedas(moneda: Monedas): Observable<Respuesta<boolean>> {
-    return this.http.get<Respuesta<boolean>>(environment.apiBase + '/moneda/' + `${moneda.id}`);
+    return this.http.delete<Respuesta<boolean>>(environment.apiBase + '/moneda/' + `${moneda.id}`);
   }
 }

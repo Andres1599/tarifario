@@ -43,6 +43,18 @@
                                 (click)="estados.wantCreate()">Agregar</button>
                         </mat-action-row>
                     </mat-expansion-panel>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Monedas
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <app-monedas #monedas></app-monedas>
+                        <mat-action-row>
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right"
+                                (click)="monedas.wantCreate()">Agregar</button>
+                        </mat-action-row>
+                    </mat-expansion-panel>
                 </mat-accordion>
             </div>
         </div>

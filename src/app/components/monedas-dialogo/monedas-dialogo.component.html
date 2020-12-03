@@ -1,0 +1,28 @@
+<h3 mat-dialog-title>Monedas</h3>
+<mat-dialog-content>
+    <form>
+        <div class="row">
+            <div class="col-md-12">
+                <mat-form-field>
+                    <input matInput placeholder="Moneda" type="text" [(ngModel)]="data.moneda"
+                        [ngModelOptions]="{standalone: true}" />
+                </mat-form-field>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-12">
+                <mat-form-field>
+                    <input matInput placeholder="ISO" type="text" [(ngModel)]="data.iso"
+                        [ngModelOptions]="{standalone: true}" />
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="false">Cancelar</button>
+    <button mat-button [mat-dialog-close]="data">
+        Ok.
+    </button>
+</mat-dialog-actions>
