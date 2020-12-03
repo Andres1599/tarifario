@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -23,7 +23,7 @@ export class TiendasTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  tiendaSelected: EventEmitter<Tiendas> = new EventEmitter<Tiendas>();
+  @Output() tiendaSelected: EventEmitter<Tiendas> = new EventEmitter<Tiendas>();
 
   constructor(
     private notificationService: NotificationsService,

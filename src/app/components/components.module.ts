@@ -13,7 +13,7 @@ import { UserService } from 'app/services/user/user.service';
 import { NotificationsService } from 'app/services/notifications/notifications.service';
 import { ProveedoresDialogoComponent } from './proveedores-dialogo/proveedores-dialogo.component';
 import { DialogosService } from 'app/services/dialogos/dialogos.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdvertenciaDialogoComponent } from './advertencia-dialogo/advertencia-dialogo.component';
 import { TipoMaterialComponent } from './tipo-material/tipo-material.component';
 import { TipoMaterialDialogoComponent } from './tipo-material-dialogo/tipo-material-dialogo.component';
@@ -22,6 +22,9 @@ import { MaterialesComponent } from './materiales/materiales.component';
 import { MaterialesDialogoComponent } from './materiales-dialogo/materiales-dialogo.component';
 import { TiendasTableComponent } from './tiendas/tiendas.component';
 import { TiendasDialogoComponent } from './tiendas-dialogo/tiendas-dialogo.component';
+import { MaterialTiendaComponent } from './material-tienda/material-tienda.component';
+import { MaterialTiendaDialogoComponent } from './material-tienda-dialogo/material-tienda-dialogo.component';
+import { MonedasService } from 'app/services/monedas/monedas.service';
 
 @NgModule({
   imports: [
@@ -29,6 +32,7 @@ import { TiendasDialogoComponent } from './tiendas-dialogo/tiendas-dialogo.compo
     RouterModule,
     MaterialModule,
     FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     FooterComponent,
@@ -43,6 +47,8 @@ import { TiendasDialogoComponent } from './tiendas-dialogo/tiendas-dialogo.compo
     MaterialesDialogoComponent,
     TiendasTableComponent,
     TiendasDialogoComponent,
+    MaterialTiendaComponent,
+    MaterialTiendaDialogoComponent,
   ],
   exports: [
     FooterComponent,
@@ -57,6 +63,8 @@ import { TiendasDialogoComponent } from './tiendas-dialogo/tiendas-dialogo.compo
     MaterialesDialogoComponent,
     TiendasTableComponent,
     TiendasDialogoComponent,
+    MaterialTiendaComponent,
+    MaterialTiendaDialogoComponent,
   ],
   providers: [
     AuthService,
@@ -64,7 +72,8 @@ import { TiendasDialogoComponent } from './tiendas-dialogo/tiendas-dialogo.compo
     UserService,
     NotificationsService,
     DialogosService,
-    MaterialesService
+    MaterialesService,
+    MonedasService
   ],
 })
 export class ComponentsModule { }
