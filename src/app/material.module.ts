@@ -10,6 +10,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from "@angular/material/dialog";
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
     imports: [
@@ -24,6 +27,9 @@ import { MatDialogModule } from "@angular/material/dialog";
         MatPaginatorModule,
         MatSortModule,
         MatDialogModule,
+        MatStepperModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
     ],
     exports: [
         MatButtonModule,
@@ -36,7 +42,10 @@ import { MatDialogModule } from "@angular/material/dialog";
         MatTableModule,
         MatPaginatorModule,
         MatSortModule,
-        MatDialogModule
+        MatDialogModule,
+        MatStepperModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
     ]
 })
 

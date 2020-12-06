@@ -23,6 +23,10 @@ export class MaterialesService {
     return this.http.get<Respuesta<Materiales[]>>(environment.apiBase + '/material/');
   }
 
+  getAllMaterialesTienda(): Observable<Respuesta<MaterialesTienda[]>> {
+    return this.http.get<Respuesta<Materiales[]>>(environment.apiBase + '/material/tienda/');
+  }
+
   getMaterialesTienda(tienda: Tiendas): Observable<Respuesta<MaterialesTienda[]>> {
     return this.http.get<Respuesta<Materiales[]>>(environment.apiBase + '/material/tienda/' + `${tienda.id}`);
   }

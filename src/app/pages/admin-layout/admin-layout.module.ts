@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -12,6 +12,13 @@ import { AdministracionComponent } from '../administracion/administracion.compon
 import { UserService } from 'app/services/user/user.service';
 import { ComponentsModule } from 'app/components/components.module';
 import { TiendasComponent } from '../tiendas/tiendas.component';
+
+import { registerLocaleData } from '@angular/common';
+import localeGT from '@angular/common/locales/es-GT';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { ArrendamientosService } from 'app/services/arrendamientos/arrendamientos.service';
+
+registerLocaleData(localeGT, 'es-GT');
 
 @NgModule({
   imports: [
@@ -32,6 +39,9 @@ import { TiendasComponent } from '../tiendas/tiendas.component';
   ],
   providers: [
     UserService,
+    ArrendamientosService,
+    { provide: LOCALE_ID, useValue: 'es-GT' },
+    { provide: MAT_DATE_LOCALE, useValue: 'es-GT' },
   ],
 })
 

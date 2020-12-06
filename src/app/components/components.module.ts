@@ -34,6 +34,10 @@ import { EstadosDialogoComponent } from './estados-dialogo/estados-dialogo.compo
 import { EstadosService } from 'app/services/estados/estados.service';
 import { MonedasComponent } from './monedas/monedas.component';
 import { MonedasDialogoComponent } from './monedas-dialogo/monedas-dialogo.component';
+import { ArrendamientosComponent } from './arrendamientos/arrendamientos.component';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+import { MaterialesTiendaBuscadorComponent } from './materiales-tienda-buscador/materiales-tienda-buscador.component';
+import { ArrendamientosService } from 'app/services/arrendamientos/arrendamientos.service';
 
 @NgModule({
   imports: [
@@ -66,6 +70,8 @@ import { MonedasDialogoComponent } from './monedas-dialogo/monedas-dialogo.compo
     EstadosDialogoComponent,
     MonedasComponent,
     MonedasDialogoComponent,
+    ArrendamientosComponent,
+    MaterialesTiendaBuscadorComponent,
   ],
   exports: [
     FooterComponent,
@@ -90,6 +96,8 @@ import { MonedasDialogoComponent } from './monedas-dialogo/monedas-dialogo.compo
     EstadosDialogoComponent,
     MonedasComponent,
     MonedasDialogoComponent,
+    ArrendamientosComponent,
+    MaterialesTiendaBuscadorComponent,
   ],
   providers: [
     AuthService,
@@ -99,7 +107,12 @@ import { MonedasDialogoComponent } from './monedas-dialogo/monedas-dialogo.compo
     DialogosService,
     MaterialesService,
     MonedasService,
-    EstadosService
+    EstadosService,
+    ArrendamientosService,
+    {
+      provide: STEPPER_GLOBAL_OPTIONS,
+      useValue: { showError: true }
+    }
   ],
 })
 export class ComponentsModule { }

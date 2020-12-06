@@ -1,0 +1,80 @@
+<mat-vertical-stepper [linear]="false" #stepper color="warn">
+    <mat-step [stepControl]="formArrendamiento">
+        <ng-template matStepLabel>Información general de arrendamiento</ng-template>
+        <div class="row">
+            <div class="col-md-12">
+                <form [formGroup]="formArrendamiento">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field>
+                                <mat-label>Proveedor</mat-label>
+                                <mat-select formControlName="fk_id_proveedor">
+                                    <mat-option *ngFor="let item of proveedores" [value]="item.id">
+                                        {{item.proveedor}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-6">
+                            <mat-form-field>
+                                <mat-label>Estado</mat-label>
+                                <mat-select formControlName="fk_id_estado">
+                                    <mat-option *ngFor="let item of estados" [value]="item.id">
+                                        {{item.estado}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <mat-form-field>
+                                <mat-label>Moneda</mat-label>
+                                <mat-select formControlName="fk_id_moneda">
+                                    <mat-option *ngFor="let item of monedas" [value]="item.id">
+                                        {{item.iso}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-4">
+                            <mat-form-field>
+                                <mat-label>Fecha de inicio</mat-label>
+                                <input matInput [matDatepicker]="pickerInicio" disabled formControlName="fecha_inicio">
+                                <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
+                                <mat-datepicker #pickerInicio disabled="false"></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-4">
+                            <mat-form-field>
+                                <mat-label>Fecha de fin</mat-label>
+                                <input matInput [matDatepicker]="pickerFin" disabled formControlName="fecha_fin">
+                                <mat-datepicker-toggle matSuffix [for]="pickerFin"></mat-datepicker-toggle>
+                                <mat-datepicker #pickerFin disabled="false"></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button mat-raised-button matStepperNext class="btn btn-danger pull-right">Continuar</button>
+            </div>
+        </div>
+    </mat-step>
+    <mat-step [stepControl]="formMateriales">
+        <ng-template matStepLabel>Materiales a arrendar</ng-template>
+        <div class="row">
+            <div class="col-md-12">
+                <button mat-raised-button matStepperNext class="btn btn-danger pull-right" (click)="searchMaterial()">Buscar Material</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button mat-raised-button matStepperNext class="btn btn-danger pull-right">Guardar</button>
+                <button mat-raised-button matStepperPrevious class="btn btn-danger pull-right">Regresar</button>
+            </div>
+        </div>
+    </mat-step>
+</mat-vertical-stepper>
