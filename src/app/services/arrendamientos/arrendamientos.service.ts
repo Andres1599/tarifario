@@ -17,7 +17,7 @@ export class ArrendamientosService {
     return this.http.get<Respuesta<Arrendamientos[]>>(environment.apiBase + '/arrendamiento/');
   }
 
-  createArrendamientos(arrendamiento: Arrendamientos, arrendamientoMaterial: ArrendamientoMateriales): Observable<Respuesta<Arrendamientos>> {
+  createArrendamientos(arrendamiento: Arrendamientos, arrendamientoMaterial: ArrendamientoMateriales[]): Observable<Respuesta<Arrendamientos>> {
     return this.http.post<Respuesta<Arrendamientos>>(environment.apiBase + '/arrendamiento/', { arrendamiento, materiales: arrendamientoMaterial });
   }
 

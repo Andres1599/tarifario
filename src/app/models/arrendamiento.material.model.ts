@@ -5,6 +5,7 @@ export interface ArrendamientoMateriales {
     observacion?: string;
     cantidad?: number;
     precio?: number;
+    total?: number;
     fk_id_material_tienda?: number;
     fk_id_arrendamiento?: number;
     materiales_tienda?: MaterialesTienda;

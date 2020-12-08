@@ -1,14 +1,16 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ArrendamientoMateriales } from 'app/models/arrendamiento.material.model';
+import { Arrendamientos } from 'app/models/arrendamiento.model';
 import { Estados } from 'app/models/estado.model';
 import { MaterialesTienda } from 'app/models/material.tienda.model';
 import { Monedas } from 'app/models/moneda.model';
 import { Proveedores } from 'app/models/proveedor.model';
 import { Usuarios } from 'app/models/usuario.model';
+import { ArrendamientosService } from 'app/services/arrendamientos/arrendamientos.service';
 import { AuthService } from 'app/services/auth/auth.service';
 import { DialogosService } from 'app/services/dialogos/dialogos.service';
 import { EstadosService } from 'app/services/estados/estados.service';
@@ -16,6 +18,7 @@ import { MonedasService } from 'app/services/monedas/monedas.service';
 import { NotificationsService } from 'app/services/notifications/notifications.service';
 import { ProveedoresService } from 'app/services/proveedores/proveedores.service';
 import { MESSAGE_ES } from 'app/utils/messages';
+import { AdvertenciaDialogoComponent } from '../advertencia-dialogo/advertencia-dialogo.component';
 import { MaterialesTiendaBuscadorComponent } from '../materiales-tienda-buscador/materiales-tienda-buscador.component';
 
 @Component({
@@ -45,6 +48,8 @@ export class ArrendamientosComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
+  @Output() craeteArrendamiento: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   constructor(
     private notificationService: NotificationsService,
     private formBuilder: FormBuilder,
@@ -52,7 +57,8 @@ export class ArrendamientosComponent implements OnInit {
     private proveedorService: ProveedoresService,
     private monedaService: MonedasService,
     private authService: AuthService,
-    private dialogoService: DialogosService
+    private dialogoService: DialogosService,
+    private arrendamientoService: ArrendamientosService
   ) { }
 
   ngOnInit(): void {
@@ -169,6 +175,22 @@ export class ArrendamientosComponent implements OnInit {
     }
   }
 
+  private clearFormArrendamiento(): void {
+    try {
+      this.formArrendamiento.setValue({
+        fecha_inicio: new Date(),
+        fecha_fin: new Date(),
+        total: 0,
+        fk_id_estado: null,
+        fk_id_moneda: null,
+        fk_id_usuario: this.currentUser.id,
+        fk_id_proveedor: null,
+      });
+    } catch (error) {
+      this.notificationService.showErrorNotification(MESSAGE_ES.error);
+    }
+  }
+
   addItemArrendamiento(): void {
     try {
       if (this.formItemArrendamiento.valid) {
@@ -196,6 +218,63 @@ export class ArrendamientosComponent implements OnInit {
         this.arrendamientoMateriales.splice(index, 1);
         this.updateTable(this.arrendamientoMateriales);
       }
+    } catch (error) {
+      this.notificationService.showErrorNotification(MESSAGE_ES.error);
+    }
+  }
+
+  saveArrendamiento(): void {
+    try {
+      if (this.formArrendamiento.valid && this.arrendamientoMateriales.length > 0) {
+        this.dialogoService.shareData = {
+          title: 'Arrendamiento',
+          message: MESSAGE_ES.warning_arrendamiento
+        };
+        this.dialogoService
+          .openDialog(AdvertenciaDialogoComponent)
+          .beforeClosed()
+          .subscribe((value: boolean) => {
+            if (value) {
+              this.createArrendamiento();
+            }
+          })
+      } else {
+        this.notificationService.showWarningNotification(MESSAGE_ES.warning_arrendamiento_create);
+      }
+    } catch (error) {
+      this.notificationService.showErrorNotification(MESSAGE_ES.error);
+    }
+  }
+
+  private createArrendamiento(): void {
+    try {
+      const materiales: ArrendamientoMateriales[] = this.arrendamientoMateriales.map(value => {
+        return {
+          cantidad: value.cantidad,
+          fk_id_material_tienda: value.fk_id_material_tienda,
+          observacion: value.observacion,
+          precio: value.precio,
+          total: (value.precio * value.cantidad)
+        }
+      });
+
+      const arrendamiento: Arrendamientos = this.formArrendamiento.value;
+
+      arrendamiento.total = materiales.map(value => { return value.total }).reduce((prev, current) => prev + current, 0);
+
+      this.arrendamientoService
+        .createArrendamientos(arrendamiento, materiales)
+        .subscribe((value) => {
+          console.log(value);
+          if (value.ok) {
+            this.notificationService.showSuccessNotification(MESSAGE_ES.create);
+            this.clearFormArrendamiento();
+            this.arrendamientoMateriales = [];
+            this.updateTable(this.arrendamientoMateriales);
+            this.craeteArrendamiento.emit(true);
+          }
+        });
+
     } catch (error) {
       this.notificationService.showErrorNotification(MESSAGE_ES.error);
     }

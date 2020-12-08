@@ -62,4 +62,14 @@ export class TypographyComponent implements OnInit {
     }
   }
 
+  updateTable(event: boolean): void {
+    try {
+      if (event) {
+        this.getArrendamietos();
+      }
+    } catch (error) {
+      this.notificationService.showErrorNotification(MESSAGE_ES.error);
+    }
+  }
+
 }

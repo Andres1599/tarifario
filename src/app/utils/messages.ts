@@ -13,4 +13,6 @@ export const MESSAGE_ES = {
     warning_usuarios: '¿Estas seguro que quieres inhabilitar este usuario?',
     warning_tipo_usuarios: '¿Estas seguro que quieres inhabilitar este usuario?',
     warning_estados: '¿Estas seguro que quieres eliminar este estado?',
+    warning_arrendamiento: '¿Estas seguro que la información a almacenar es la correcta?',
+    warning_arrendamiento_create: 'Debes de completar toda la información del arrendemiento antes de guardar. Asegurate de completar todos los campos.',
 };
