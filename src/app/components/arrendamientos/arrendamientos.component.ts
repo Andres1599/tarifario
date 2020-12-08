@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { ArrendamientoMateriales } from 'app/models/arrendamiento.material.model';
 import { Estados } from 'app/models/estado.model';
 import { MaterialesTienda } from 'app/models/material.tienda.model';
 import { Monedas } from 'app/models/moneda.model';
@@ -24,11 +28,22 @@ export class ArrendamientosComponent implements OnInit {
   currentUser: Usuarios;
 
   formArrendamiento: FormGroup;
+  formItemArrendamiento: FormGroup;
   formMateriales: FormArray = new FormArray([]);
+
+  arrendamientoMateriales: ArrendamientoMateriales[] = [];
 
   estados: Estados[] = [];
   proveedores: Proveedores[] = [];
   monedas: Monedas[] = [];
+
+  currentMaterial: MaterialesTienda = {};
+
+  dataSourceMateriales: MatTableDataSource<ArrendamientoMateriales>;
+  displayedColumns: string[] = ['fk_id_material_tienda', 'observacion', 'cantidad', 'precio', 'options'];
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     private notificationService: NotificationsService,
@@ -50,15 +65,25 @@ export class ArrendamientosComponent implements OnInit {
 
   private initForm(): void {
     try {
+
       this.formArrendamiento = this.formBuilder.group({
         fecha_inicio: [new Date(), Validators.required],
         fecha_fin: [new Date(), Validators.required],
         total: [{ value: 0, disabled: true }, Validators.required],
-        fk_id_estado: [0, Validators.required],
-        fk_id_moneda: [0, Validators.required],
+        fk_id_estado: [, Validators.required],
+        fk_id_moneda: [, Validators.required],
         fk_id_usuario: [this.currentUser.id, Validators.required],
-        fk_id_proveedor: [this.currentUser.id, Validators.required],
+        fk_id_proveedor: [, Validators.required],
       });
+
+      this.formItemArrendamiento = this.formBuilder.group({
+        observacion: ['', Validators.required],
+        cantidad: [0, Validators.required],
+        precio: [0, Validators.required],
+        fk_id_material_tienda: [0, Validators.required],
+        materiale: []
+      });
+
     } catch (error) {
       this.notificationService.showErrorNotification(MESSAGE_ES.error);
     }
@@ -106,8 +131,71 @@ export class ArrendamientosComponent implements OnInit {
         .openDialog(MaterialesTiendaBuscadorComponent)
         .beforeClosed()
         .subscribe((value: MaterialesTienda) => {
-          console.log(value);
+          if (value) {
+            this.currentMaterial = value;
+            this.setValueForm(value);
+          }
         });
+    } catch (error) {
+      this.notificationService.showErrorNotification(MESSAGE_ES.error);
+    }
+  }
+
+  private setValueForm(value: MaterialesTienda): void {
+    try {
+      this.formItemArrendamiento.get('precio').setValue(value.precio);
+      this.formItemArrendamiento.get('cantidad').setValue(value.cantidad);
+      this.formItemArrendamiento.get('fk_id_material_tienda').setValue(value.id);
+      this.formItemArrendamiento.get('materiale').setValue(value.materiale);
+      this.formItemArrendamiento.controls['cantidad'].setValidators([Validators.max(value.cantidad)]);
+    } catch (error) {
+      this.notificationService.showErrorNotification(MESSAGE_ES.error);
+    }
+  }
+
+  private clearFormItem(): void {
+    try {
+      this.formItemArrendamiento.setValue({
+        observacion: '',
+        cantidad: 0,
+        precio: 0,
+        fk_id_material_tienda: 0,
+        materiale: null
+      });
+
+      this.currentMaterial = {};
+    } catch (error) {
+      this.notificationService.showErrorNotification(MESSAGE_ES.error);
+    }
+  }
+
+  addItemArrendamiento(): void {
+    try {
+      if (this.formItemArrendamiento.valid) {
+        this.arrendamientoMateriales.push(this.formItemArrendamiento.value);
+        this.updateTable(this.arrendamientoMateriales);
+        this.clearFormItem();
+      } else {
+        this.notificationService.showErrorNotification('Completa los campos para agregar al listado el material');
+      }
+    } catch (error) {
+      this.notificationService.showErrorNotification(MESSAGE_ES.error);
+    }
+  }
+
+  updateTable(value: ArrendamientoMateriales[]) {
+    this.dataSourceMateriales = new MatTableDataSource<ArrendamientoMateriales>(value);
+    this.dataSourceMateriales.paginator = this.paginator;
+    this.dataSourceMateriales.sort = this.sort;
+  }
+
+  removeItem(element: ArrendamientoMateriales): void {
+    try {
+      const index = this.arrendamientoMateriales.findIndex(value => value === element);
+      if (index > -1) {
+        this.arrendamientoMateriales.splice(index, 1);
+        this.updateTable(this.arrendamientoMateriales);
+      }
     } catch (error) {
       this.notificationService.showErrorNotification(MESSAGE_ES.error);
     }

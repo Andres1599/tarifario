@@ -57,8 +57,6 @@ export class TypographyComponent implements OnInit {
       } else if (element.estado === "Cerrado") {
         return '#d35d6e';
       }
-
-
     } catch (error) {
       return '';
     }
