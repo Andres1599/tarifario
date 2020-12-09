@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { AdvertenciaDialogoComponent } from 'app/components/advertencia-dialogo/advertencia-dialogo.component';
 import { Arrendamientos } from 'app/models/arrendamiento.model';
 import { Estados } from 'app/models/estado.model';
@@ -27,6 +28,7 @@ export class TypographyComponent implements OnInit {
     private notificationService: NotificationsService,
     private dialogService: DialogosService,
     private arrendamientoService: ArrendamientosService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -101,6 +103,14 @@ export class TypographyComponent implements OnInit {
           this.getArrendamietos();
         }
       })
+    } catch (error) {
+      this.notificationService.showErrorNotification(MESSAGE_ES.error);
+    }
+  }
+
+  wantPrint(arrendamiento: Arrendamientos): void {
+    try {
+      this.router.navigateByUrl('/arrendamiento/' + `${arrendamiento.id}`);
     } catch (error) {
       this.notificationService.showErrorNotification(MESSAGE_ES.error);
     }

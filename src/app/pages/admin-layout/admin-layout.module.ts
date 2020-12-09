@@ -17,6 +17,8 @@ import { registerLocaleData } from '@angular/common';
 import localeGT from '@angular/common/locales/es-GT';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { ArrendamientosService } from 'app/services/arrendamientos/arrendamientos.service';
+import { ImpresionArrendamientoComponent } from '../impresion-arrendamiento/impresion-arrendamiento.component';
+import { NgPrintModule } from 'ng-print';
 
 registerLocaleData(localeGT, 'es-GT');
 
@@ -27,7 +29,8 @@ registerLocaleData(localeGT, 'es-GT');
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    ComponentsModule
+    ComponentsModule,
+    NgPrintModule
   ],
   declarations: [
     DashboardComponent,
@@ -36,6 +39,7 @@ registerLocaleData(localeGT, 'es-GT');
     TypographyComponent,
     AdministracionComponent,
     TiendasComponent,
+    ImpresionArrendamientoComponent,
   ],
   providers: [
     UserService,

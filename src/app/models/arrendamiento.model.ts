@@ -2,6 +2,7 @@ import { ArrendamientoMateriales } from "./arrendamiento.material.model";
 import { Estados } from "./estado.model";
 import { Monedas } from "./moneda.model";
 import { Proveedores } from "./proveedor.model";
+import { Usuarios } from "./usuario.model";
 
 export interface Arrendamientos {
     id?: number;
@@ -17,4 +18,5 @@ export interface Arrendamientos {
     estado?: Estados;
     moneda?: Monedas;
     proveedore?: Proveedores;
+    usuario?: Usuarios;
 }

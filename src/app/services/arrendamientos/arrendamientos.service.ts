@@ -17,6 +17,10 @@ export class ArrendamientosService {
     return this.http.get<Respuesta<Arrendamientos[]>>(environment.apiBase + '/arrendamiento/');
   }
 
+  getArrendamientosById(idArrendamiento: number): Observable<Respuesta<Arrendamientos>> {
+    return this.http.get<Respuesta<Arrendamientos>>(environment.apiBase + '/arrendamiento/' + `${idArrendamiento}`);
+  }
+
   createArrendamientos(arrendamiento: Arrendamientos, arrendamientoMaterial: ArrendamientoMateriales[]): Observable<Respuesta<Arrendamientos>> {
     return this.http.post<Respuesta<Arrendamientos>>(environment.apiBase + '/arrendamiento/', { arrendamiento, materiales: arrendamientoMaterial });
   }
