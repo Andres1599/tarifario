@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { AdvertenciaDialogoComponent } from 'app/components/advertencia-dialogo/advertencia-dialogo.component';
 import { Arrendamientos } from 'app/models/arrendamiento.model';
 import { Estados } from 'app/models/estado.model';
 import { ArrendamientosService } from 'app/services/arrendamientos/arrendamientos.service';
@@ -67,6 +68,39 @@ export class TypographyComponent implements OnInit {
       if (event) {
         this.getArrendamietos();
       }
+    } catch (error) {
+      this.notificationService.showErrorNotification(MESSAGE_ES.error);
+    }
+  }
+
+  wantClose(arrendamiento: Arrendamientos): void {
+    try {
+      this.dialogService.shareData = {
+        title: 'Arrendamiento',
+        message: MESSAGE_ES.warning_arrendamiento_close
+      };
+      this.dialogService
+        .openDialog(AdvertenciaDialogoComponent)
+        .beforeClosed()
+        .subscribe((value: boolean) => {
+          if (value) {
+            arrendamiento.fk_id_estado = 2;
+            this.updateState(arrendamiento);
+          }
+        })
+    } catch (error) {
+      this.notificationService.showErrorNotification(MESSAGE_ES.error);
+    }
+  }
+
+  private updateState(arrendamiento: Arrendamientos): void {
+    try {
+      this.arrendamientoService.updateStateArrendamientos(arrendamiento).subscribe(value => {
+        if (value.ok) {
+          this.notificationService.showSuccessNotification(MESSAGE_ES.update);
+          this.getArrendamietos();
+        }
+      })
     } catch (error) {
       this.notificationService.showErrorNotification(MESSAGE_ES.error);
     }

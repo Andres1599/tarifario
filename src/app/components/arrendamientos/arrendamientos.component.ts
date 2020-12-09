@@ -265,7 +265,6 @@ export class ArrendamientosComponent implements OnInit {
       this.arrendamientoService
         .createArrendamientos(arrendamiento, materiales)
         .subscribe((value) => {
-          console.log(value);
           if (value.ok) {
             this.notificationService.showSuccessNotification(MESSAGE_ES.create);
             this.clearFormArrendamiento();

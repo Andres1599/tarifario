@@ -21,4 +21,8 @@ export class ArrendamientosService {
     return this.http.post<Respuesta<Arrendamientos>>(environment.apiBase + '/arrendamiento/', { arrendamiento, materiales: arrendamientoMaterial });
   }
 
+  updateStateArrendamientos(arrendamiento: Arrendamientos): Observable<Respuesta<Arrendamientos>> {
+    return this.http.put<Respuesta<Arrendamientos>>(environment.apiBase + '/arrendamiento/', arrendamiento);
+  }
+
 }
