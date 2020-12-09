@@ -18,7 +18,7 @@ export class ImpresionArrendamientoComponent implements OnInit {
 
   arrendamiento: Arrendamientos;
   dataSourceMateriales: MatTableDataSource<ArrendamientoMateriales>;
-  displayedColumns: string[] = ['fk_id_material_tienda', 'tipo','observacion', 'cantidad', 'precio', 'total'];
+  displayedColumns: string[] = ['fk_id_material_tienda', 'tipo', 'tienda','observacion', 'cantidad', 'precio', 'total'];
 
   constructor(
     private router: ActivatedRoute,
