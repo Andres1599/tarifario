@@ -8,7 +8,7 @@ import { AuthOnGuard } from './guard/auth-on/auth-on.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'profile',
     pathMatch: 'full',
   }, {
     path: '',

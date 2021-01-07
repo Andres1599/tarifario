@@ -34,7 +34,7 @@ export class AuthService {
       localStorage.setItem(this.token, respuesta.data.token);
       localStorage.setItem(this.expired, JSON.stringify(expiresAt.valueOf()));
       localStorage.setItem(this.user, this.DataEncode(JSON.stringify(respuesta.data.usuario)))
-      this.router.navigateByUrl('/dashboard');
+      this.router.navigateByUrl('/profile');
     } catch (error) {
       this.notificationService.showErrorNotification(MESSAGE_ES.errorLogIn);
     }
