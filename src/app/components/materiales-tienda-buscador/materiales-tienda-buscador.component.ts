@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -17,7 +17,7 @@ export class MaterialesTiendaBuscadorComponent implements OnInit {
 
   dataSourceMaterialesTienda: MatTableDataSource<MaterialesTienda>;
   // 'url_imagen' agregar en caso de necesitar visualizar una imagen en la lista
-  displayedColumns: string[] = ['fk_id_material', 'dimension', 'cantidad', 'precio', 'fk_id_tienda', 'options'];
+  displayedColumns: string[] = ['fk_id_material', 'dimension', 'cantidad', 'precio', 'options'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -26,6 +26,7 @@ export class MaterialesTiendaBuscadorComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<MaterialesTiendaBuscadorComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: number,
     private notificationService: NotificationsService,
     private materialesService: MaterialesService,
   ) { }
@@ -36,7 +37,8 @@ export class MaterialesTiendaBuscadorComponent implements OnInit {
 
   private getMaterialesTienda(): void {
     try {
-      this.materialesService.getAllMaterialesTienda().subscribe((value) => {
+      console.log(this.data);
+      this.materialesService.getMaterialesTienda({ id: this.data }).subscribe((value) => {
         if (value.ok) {
           this.materialesTienda = value.data;
           this.dataSourceMaterialesTienda = new MatTableDataSource<MaterialesTienda>(this.materialesTienda);

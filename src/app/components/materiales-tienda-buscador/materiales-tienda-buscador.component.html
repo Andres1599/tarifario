@@ -25,11 +25,6 @@
                     <td mat-cell *matCellDef="let element"> {{element?.moneda?.iso}} {{element?.precio}} </td>
                 </ng-container>
 
-                <ng-container matColumnDef="fk_id_tienda">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Tienda </th>
-                    <td mat-cell *matCellDef="let element"> {{element?.tienda?.codigo}}</td>
-                </ng-container>
-
                 <ng-container matColumnDef="options">
                     <th mat-header-cell *matHeaderCellDef> Opciones </th>
                     <td mat-cell *matCellDef="let element">

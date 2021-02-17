@@ -151,6 +151,7 @@ export class ArrendamientosComponent implements OnInit {
 
   searchMaterial(): void {
     try {
+      this.dialogoService.shareData = this.formArrendamiento.get('fk_id_tienda').value;
       this.dialogoService
         .openDialog(MaterialesTiendaBuscadorComponent)
         .beforeClosed()
