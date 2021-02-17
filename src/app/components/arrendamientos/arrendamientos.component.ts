@@ -9,6 +9,7 @@ import { Estados } from 'app/models/estado.model';
 import { MaterialesTienda } from 'app/models/material.tienda.model';
 import { Monedas } from 'app/models/moneda.model';
 import { Proveedores } from 'app/models/proveedor.model';
+import { Tiendas } from 'app/models/tienda.model';
 import { Usuarios } from 'app/models/usuario.model';
 import { ArrendamientosService } from 'app/services/arrendamientos/arrendamientos.service';
 import { AuthService } from 'app/services/auth/auth.service';
@@ -17,6 +18,7 @@ import { EstadosService } from 'app/services/estados/estados.service';
 import { MonedasService } from 'app/services/monedas/monedas.service';
 import { NotificationsService } from 'app/services/notifications/notifications.service';
 import { ProveedoresService } from 'app/services/proveedores/proveedores.service';
+import { TiendasService } from 'app/services/tiendas/tiendas.service';
 import { MESSAGE_ES } from 'app/utils/messages';
 import { AdvertenciaDialogoComponent } from '../advertencia-dialogo/advertencia-dialogo.component';
 import { MaterialesTiendaBuscadorComponent } from '../materiales-tienda-buscador/materiales-tienda-buscador.component';
@@ -39,6 +41,7 @@ export class ArrendamientosComponent implements OnInit {
   estados: Estados[] = [];
   proveedores: Proveedores[] = [];
   monedas: Monedas[] = [];
+  tiendas: Tiendas[] = [];
 
   currentMaterial: MaterialesTienda = {};
 
@@ -58,7 +61,8 @@ export class ArrendamientosComponent implements OnInit {
     private monedaService: MonedasService,
     private authService: AuthService,
     private dialogoService: DialogosService,
-    private arrendamientoService: ArrendamientosService
+    private arrendamientoService: ArrendamientosService,
+    private tiendaService: TiendasService
   ) { }
 
   ngOnInit(): void {
@@ -66,6 +70,7 @@ export class ArrendamientosComponent implements OnInit {
     this.getEstados();
     this.getProveedores();
     this.getMonedas();
+    this.getTiendas();
     this.initForm();
   }
 
@@ -80,6 +85,7 @@ export class ArrendamientosComponent implements OnInit {
         fk_id_moneda: [, Validators.required],
         fk_id_usuario: [this.currentUser.id, Validators.required],
         fk_id_proveedor: [, Validators.required],
+        fk_id_tienda: [, Validators.required],
       });
 
       this.formItemArrendamiento = this.formBuilder.group({
@@ -126,6 +132,18 @@ export class ArrendamientosComponent implements OnInit {
           this.monedas = value.data;
         }
       });
+    } catch (error) {
+      this.notificationService.showErrorNotification(MESSAGE_ES.error);
+    }
+  }
+
+  private getTiendas(): void {
+    try {
+      this.tiendaService.getTiendas().subscribe(value => {
+        if (value.ok) {
+          this.tiendas = value.data;
+        }
+      })
     } catch (error) {
       this.notificationService.showErrorNotification(MESSAGE_ES.error);
     }

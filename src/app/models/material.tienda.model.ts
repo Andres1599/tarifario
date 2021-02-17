@@ -7,6 +7,7 @@ export interface MaterialesTienda {
     dimension?: string;
     url_imagen?: string;
     cantidad?: number;
+    maximo?: number;
     precio?: number;
     fk_id_material?: number;
     fk_id_tienda?: number;

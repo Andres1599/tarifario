@@ -2,21 +2,26 @@
 <mat-dialog-content>
     <form [formGroup]="formMaterialTienda">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <mat-form-field>
                     <input matInput placeholder="Dimensión" type="text" formControlName="dimension" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-4">
+                <mat-form-field>
+                    <input matInput placeholder="Precio" type="number" formControlName="precio" />
                 </mat-form-field>
             </div>
         </div>
         <div class="row">
             <div class="col-md-4">
                 <mat-form-field>
-                    <input matInput placeholder="Cantidad" type="number" formControlName="cantidad" />
+                    <input matInput placeholder="Límite" type="number" formControlName="maximo" />
                 </mat-form-field>
             </div>
             <div class="col-md-4">
                 <mat-form-field>
-                    <input matInput placeholder="Precio" type="number" formControlName="precio" />
+                    <input matInput placeholder="Cantidad" type="number" formControlName="cantidad" />
                 </mat-form-field>
             </div>
             <div class="col-md-4">

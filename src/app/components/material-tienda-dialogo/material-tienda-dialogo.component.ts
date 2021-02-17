@@ -43,10 +43,11 @@ export class MaterialTiendaDialogoComponent implements OnInit {
   private initFormGroup(): void {
     try {
       this.formMaterialTienda = this.formBuilder.group({
-        id: [this.data?.id ? this.data?.id: 0, Validators.required],
+        id: [this.data?.id ? this.data?.id : 0, Validators.required],
         url_imagen: ['...', Validators.required],
         dimension: [this.data?.dimension, Validators.required],
         cantidad: [this.data?.cantidad, Validators.required],
+        maximo: [this.data?.maximo, Validators.required],
         precio: [this.data?.precio, Validators.required],
         fk_id_moneda: [this.data?.fk_id_moneda, Validators.required],
         fk_id_material: [this.data?.fk_id_material, Validators.required],

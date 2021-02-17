@@ -21,7 +21,7 @@ export class MaterialTiendaComponent implements OnInit, OnChanges {
 
   dataSourceMaterialesTienda: MatTableDataSource<MaterialesTienda>;
   // 'url_imagen' agregar en caso de necesitar visualizar una imagen en la lista
-  displayedColumns: string[] = ['fk_id_material', 'dimension', 'cantidad', 'precio', 'fk_id_tienda', 'options'];
+  displayedColumns: string[] = ['fk_id_material', 'dimension', 'cantidad', 'maximo','precio', 'fk_id_tienda', 'options'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -42,7 +42,7 @@ export class MaterialTiendaComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (!changes['materialesTienda'].isFirstChange()) {
+    if (!changes['materialesTienda']?.isFirstChange()) {
       this.getMaterialesTienda(this.materialesTienda);
     }
   }
